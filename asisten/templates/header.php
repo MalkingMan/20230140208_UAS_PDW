@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'asisten') {
     <title>Panel Asisten - <?php echo $pageTitle ?? 'Dashboard'; ?></title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/UAS_PDW/css/dark-mode.css">
     
 </head>
 <body class="bg-gray-100">
@@ -72,7 +73,14 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'asisten') {
     <main class="flex-1 h-screen overflow-y-auto p-6 lg:p-10 bg-white">
         <header class="flex items-center justify-between mb-8">
             <h1 class="text-3xl font-bold text-[#38000A]"><?php echo $pageTitle ?? 'Dashboard'; ?></h1>
-            <a href="/UAS_PDW/logout.php" class="bg-[#CD1C18] hover:bg-[#9B1313] text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
-                Logout
-            </a>
+            <div class="flex items-center">
+                <button id="darkModeToggle" class="mr-4 text-gray-600 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <a href="/UAS_PDW/logout.php" class="bg-[#CD1C18] hover:bg-[#9B1313] text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                    Logout
+                </a>
+            </div>
         </header>
