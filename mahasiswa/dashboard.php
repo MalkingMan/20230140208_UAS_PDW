@@ -86,52 +86,42 @@ $notifikasi_list = array_slice($notifikasi_list, 0, 3);
 $conn->close();
 ?>
 
-<div class="bg-gradient-to-r from-blue-500 to-cyan-400 text-white p-8 rounded-xl shadow-lg mb-8">
-    <h1 class="text-3xl font-bold">Selamat Datang Kembali, <?php echo htmlspecialchars($_SESSION['nama']); ?>!</h1>
-    <p class="mt-2 opacity-90">Terus semangat dalam menyelesaikan semua modul praktikummu.</p>
+<div style="background: linear-gradient(to right, #3b82f6, #60a5fa); color: white; padding: 2rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.875rem; font-weight: 700;">Selamat Datang Kembali, <?php echo htmlspecialchars($_SESSION['nama']); ?>!</h2>
+    <p style="margin-top: 0.5rem; opacity: 0.9;">Terus semangat dalam menyelesaikan semua modul praktikummu.</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
-        <div class="text-5xl font-extrabold text-blue-600"><?php echo $praktikum_diikuti; ?></div>
-        <div class="mt-2 text-lg text-gray-600">Praktikum Diikuti</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 800; color: #1e3a8a;"><?php echo $praktikum_diikuti; ?></div>
+        <div style="margin-top: 0.5rem; color: #6b7280;">Praktikum Diikuti</div>
     </div>
-    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
-        <div class="text-5xl font-extrabold text-green-500"><?php echo $tugas_selesai; ?></div>
-        <div class="mt-2 text-lg text-gray-600">Tugas Selesai</div>
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 800; color: #10b981;"><?php echo $tugas_selesai; ?></div>
+        <div style="margin-top: 0.5rem; color: #6b7280;">Tugas Selesai</div>
     </div>
-    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center">
-        <div class="text-5xl font-extrabold text-yellow-500"><?php echo $tugas_menunggu; ?></div>
-        <div class="mt-2 text-lg text-gray-600">Tugas Menunggu</div>
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 800; color: #facc15;"><?php echo $tugas_menunggu; ?></div>
+        <div style="margin-top: 0.5rem; color: #6b7280;">Tugas Menunggu</div>
     </div>
 </div>
 
-<div class="bg-white p-6 rounded-xl shadow-md">
-    <h3 class="text-2xl font-bold text-gray-800 mb-4">Notifikasi Terbaru</h3>
-    <ul class="space-y-4">
-
+<div class="card">
+    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Notifikasi Terbaru</h3>
+    <ul style="list-style: none; padding: 0;">
         <?php if (empty($notifikasi_list)): ?>
-            <li class="text-center text-gray-500 py-4">Belum ada notifikasi untuk Anda.</li>
+            <li style="text-align: center; color: #6b7280; padding: 2rem 0;">Belum ada notifikasi untuk Anda.</li>
         <?php else: ?>
             <?php foreach ($notifikasi_list as $notif): ?>
-                <li class="flex items-start p-3 border-b border-gray-100 last:border-b-0">
+                <li style="border-bottom: 1px solid #f3f4f6; padding: 1rem 0;">
                     <?php if ($notif['tipe'] == 'daftar'): ?>
-                        <span class="text-xl mr-4">✅</span>
-                        <div>
-                            Anda berhasil mendaftar pada mata praktikum 
-                            <a href="course_detail.php?id=<?php echo $notif['link_id']; ?>" class="font-semibold text-blue-600 hover:underline"><?php echo htmlspecialchars($notif['teks_utama']); ?></a>.
-                        </div>
+                        <span>✅ Anda berhasil mendaftar pada mata praktikum <strong><a href="course_detail.php?id=<?php echo $notif['link_id']; ?>"><?php echo htmlspecialchars($notif['teks_utama']); ?></a></strong>.</span>
                     <?php elseif ($notif['tipe'] == 'nilai' && !empty($notif['tanggal'])): ?>
-                        <span class="text-xl mr-4">🔔</span>
-                        <div>
-                            Nilai untuk 
-                            <a href="submit_assignment.php?id_modul=<?php echo $notif['link_id']; ?>" class="font-semibold text-blue-600 hover:underline"><?php echo htmlspecialchars($notif['teks_utama']); ?></a> telah diberikan.
-                        </div>
+                        <span>🔔 Nilai untuk <strong><a href="submit_assignment.php?id_modul=<?php echo $notif['link_id']; ?>"><?php echo htmlspecialchars($notif['teks_utama']); ?></a></strong> telah diberikan.</span>
                     <?php endif; ?>
                 </li>
             <?php endforeach; ?>
         <?php endif; ?>
-        
     </ul>
 </div>
 
