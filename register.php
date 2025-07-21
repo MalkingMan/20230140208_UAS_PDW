@@ -48,56 +48,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Registrasi Pengguna</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #FFA896; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background-color: white; padding: 20px 40px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 320px; }
-        h2 { text-align: center; color: #38000A; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; color: #38000A; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #38000A; border-radius: 4px; box-sizing: border-box; }
-        .btn { background-color: #CD1C18; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
-        .btn:hover { background-color: #9B1313; }
-        .message { color: #CD1C18; text-align: center; margin-bottom: 15px; }
-        .login-link { text-align: center; margin-top: 15px; }
-        .login-link a { color: #CD1C18; text-decoration: none; }
-    </style>
+    <title>Registrasi - SIMPRAK</title>
+    <link rel="stylesheet" href="mahasiswa/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h2>Registrasi</h2>
-        <?php if (!empty($message)): ?>
-            <p class="message"><?php echo $message; ?></p>
-        <?php endif; ?>
-        <form action="register.php" method="post">
-            <div class="form-group">
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" id="nama" name="nama" required>
+    <div class="container" style="max-width: 400px; margin-top: 5rem;">
+        <div class="card">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Registrasi SIMPRAK</h1>
+            <?php if (!empty($message)): ?>
+                <div class="alert alert-danger"><?php echo $message; ?></div>
+            <?php endif; ?>
+            <form action="register.php" method="post">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Daftar Sebagai</label>
+                    <select id="role" name="role" class="form-control" required>
+                        <option value="mahasiswa">Mahasiswa</option>
+                        <option value="asisten">Asisten</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Daftar</button>
+            </form>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="role">Daftar Sebagai</label>
-                <select id="role" name="role" required>
-                    <option value="mahasiswa">Mahasiswa</option>
-                    <option value="asisten">Asisten</option>
-                </select>
-            </div>
-            <button type="submit" class="btn">Daftar</button>
-        </form>
-        <div class="login-link">
-            <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
         </div>
     </div>
 </body>
