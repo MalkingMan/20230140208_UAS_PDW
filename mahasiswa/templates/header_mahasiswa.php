@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Panel Mahasiswa - <?php echo $pageTitle ?? 'Dashboard'; ?></title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/UAS_PDW/css/dark-mode.css">
 
 </head>
 <body class="bg-gray-100 font-sans">
@@ -44,7 +45,12 @@ if (!isset($_SESSION['user_id'])) {
 
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
-                    <a href="/UAS_PDW/logout.php" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300">
+                        <button id="darkModeToggle" class="mr-4 text-gray-200 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </button>
+                        <a href="/UAS_PDW/logout.php" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300">
                             Logout
                         </a>
                     </div>
